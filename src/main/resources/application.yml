@@ -16,7 +16,7 @@ spring:
           access-key: xxx #访问密钥
           secret-key: xxx #密钥
           region: cn-north-1 #区域
-          first-path: first #第一目录层级(默认为空, 当存在时所有路径都以 [firstPath + objectName] 拼接 ** 需要自己实现ObjectConverter **)
+#          first-path: first #第一目录层级(默认为空, 当存在时所有路径都以 [firstPath + objectName] 拼接 ** 需要自己实现ObjectConverter **)
           path-style: true #路径样式(默认为true)
           auto-create-bucket: true #是否自动创建目标bucket
 #        s3_enc:

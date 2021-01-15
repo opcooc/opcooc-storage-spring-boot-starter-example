@@ -1,23 +1,9 @@
-/*
- * Copyright © 2020-2025 organization opcooc
- * <pre>
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * <pre/>
- */
 package com.example.demo.config;
 
 import com.example.demo.listener.ClientDriverListener;
+import com.opcooc.storage.provider.YmlClientDriverProvider;
 import io.swagger.annotations.Api;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;
@@ -27,9 +13,6 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-/**
- * @author shenqicheng
- */
 @Configuration
 @EnableSwagger2
 public class DemoConfiguration {
@@ -47,5 +30,20 @@ public class DemoConfiguration {
     @Bean
     public ClientDriverListener clientDriverListener() {
         return new ClientDriverListener();
+    }
+
+    @Bean
+    public DemoClientDriverProvider demoClientDriverProvider() {
+        return new DemoClientDriverProvider();
+    }
+
+    @Bean
+    public DemoBucketConverter demoBucketConverter() {
+        return new DemoBucketConverter();
+    }
+
+    @Bean
+    public DemoObjectConverter demoObjectConverter() {
+        return new DemoObjectConverter();
     }
 }

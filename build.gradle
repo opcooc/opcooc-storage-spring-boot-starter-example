@@ -20,7 +20,7 @@ repositories {
 
 dependencies {
     //opcooc
-    implementation 'com.opcooc:opcooc-storage-spring-boot-starter:1.0.0'
+    implementation 'com.opcooc:opcooc-storage-spring-boot-starter:1.0.1'
     //spring
     implementation 'org.springframework.boot:spring-boot-starter-web'
     //hutool

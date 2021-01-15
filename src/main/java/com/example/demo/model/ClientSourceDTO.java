@@ -1,35 +1,22 @@
-/*
- * Copyright © 2020-2025 organization opcooc
- * <pre>
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * <pre/>
- */
 package com.example.demo.model;
 
+import com.opcooc.storage.enums.DefaultDriverType;
+import com.opcooc.storage.support.DecryptCallback;
+import com.opcooc.storage.support.DefaultDecryptCallback;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-/**
- * @author shenqicheng
- */
 @Data
 public class ClientSourceDTO {
 
-    @ApiModelProperty("ClientDriver唯一名称")
-    private String name;
+    @ApiModelProperty("客户端驱动名称唯一标识")
+    private String driverName;
 
-    @ApiModelProperty("bucketName")
-    private String bucketName;
+    @ApiModelProperty("驱动类型")
+    private DefaultDriverType type = DefaultDriverType.S3;
+
+    @ApiModelProperty("默认主目录(需要保证唯一)")
+    private String defaultBucket;
 
     @ApiModelProperty("endPoint")
     private String endPoint;
@@ -46,14 +33,11 @@ public class ClientSourceDTO {
     @ApiModelProperty("region")
     private String region;
 
-    @ApiModelProperty("basePath")
-    private String basePath;
+    @ApiModelProperty("第一目录层级(默认为空, 当存在时所有路径都以 [firstPath + objectName] 拼接 ** 需要自己实现ObjectConverter **)")
+    private String firstPath;
 
-    @ApiModelProperty("autoCreateBucket")
+    @ApiModelProperty("是否自动创建主目录")
     private Boolean autoCreateBucket = false;
-
-    @ApiModelProperty("decryptCallbackClassName")
-    private String decryptCallbackClassName;
 
     @ApiModelProperty("解密公匙")
     private String publicKey;
